@@ -16,9 +16,10 @@ class Handler extends ExceptionHandler
     {
         $chain = new HandlersChain();
 
+        // Order matters, so put more specific handlers first
         $chain->registerHandler(new AjaxValidationHandler());
-        $chain->registerHandler(new AjaxHandler());
         $chain->registerHandler(new JsonValidationHandler());
+        $chain->registerHandler(new AjaxHandler());
         $chain->registerHandler(new JsonHandler());
 
         return $chain->processChain($request, $e) ?? parent::render($request, $e);
