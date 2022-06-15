@@ -6,7 +6,6 @@ namespace Oguz\Tremmel\Handlers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 
@@ -19,17 +18,6 @@ class JsonValidationHandler extends AbstractHandler
 
     protected function handle(Request $request, Throwable $exception): JsonResponse
     {
-        $response = app(JsonResponse::class);
-
-        foreach ($exception->errors() as $errs) {
-            $errors[] = array_pop($errs);
-        }
-
-        return $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)
-            ->setData([
-                'successful' => false,
-                'code' => 'internal_error',
-                'message' => implode(PHP_EOL, $errors ?? ['Something went wrong']),
-            ]);
+        return $this->defaultValidationExceptionResponse($exception);
     }
 }

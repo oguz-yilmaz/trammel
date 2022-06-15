@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Oguz\Tremmel\Handlers;
 
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Throwable;
 
 abstract class AbstractHandler
@@ -35,4 +35,31 @@ abstract class AbstractHandler
     abstract protected function isResponsible(Request $request, Throwable $exception): bool;
 
     abstract protected function handle(Request $request, Throwable $exception): Response|JsonResponse;
+
+    protected function defaultValidationExceptionResponse(Throwable $exception): JsonResponse
+    {
+        $errors = [];
+
+        foreach ($exception->errors() as $errs) {
+            $errors[] = array_pop($errs);
+        }
+
+        $response = new JsonResponse([
+            'success' => false,
+            'errors' => $errors,
+        ]);
+
+        return $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    protected function defaultExceptionResponse(Throwable $exception): JsonResponse
+    {
+        $response = new JsonResponse();
+
+        return $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)
+            ->setData([
+                'successful' => false,
+                'message' => $exception->getMessage()
+            ]);
+    }
 }
