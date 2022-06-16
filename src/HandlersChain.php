@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Oguz\Tremmel;
 
-use Illuminate\Http\Request;
 use Oguz\Tremmel\Handlers\AbstractHandler;
+use Illuminate\Http\Request;
 use Throwable;
 
 class HandlersChain
