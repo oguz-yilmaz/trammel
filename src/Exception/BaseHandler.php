@@ -1,26 +1,29 @@
 <?php
-// app/Exception/Handler.php
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Oguz\Tremmel\Handlers\AjaxHandler;
-use Oguz\Tremmel\Handlers\AjaxValidationHandler;
-use Oguz\Tremmel\Handlers\HandlersChain;
-use Oguz\Tremmel\Handlers\JsonHandler;
-use Oguz\Tremmel\Handlers\JsonValidationHandler;
+namespace Oguz\Tremmel\Exception;
 
-class Handler extends ExceptionHandler
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Oguz\Tremmel\Handlers\AjaxValidationHandler;
+use Oguz\Tremmel\Handlers\JsonValidationHandler;
+use Oguz\Tremmel\Handlers\ValidationHandler;
+use Oguz\Tremmel\Handlers\HandlersChain;
+use Oguz\Tremmel\Handlers\AjaxHandler;
+use Oguz\Tremmel\Handlers\JsonHandler;
+use Throwable;
+
+class BaseHandler extends ExceptionHandler
 {
     public function render($request, Throwable $e)
     {
         $chain = new HandlersChain();
 
-        // Order matters, so put more specific handlers first
         $chain->registerHandler(new AjaxValidationHandler());
         $chain->registerHandler(new JsonValidationHandler());
         $chain->registerHandler(new AjaxHandler());
         $chain->registerHandler(new JsonHandler());
+        $chain->registerHandler(new ValidationHandler());
 
         return $chain->processChain($request, $e) ?? parent::render($request, $e);
     }
