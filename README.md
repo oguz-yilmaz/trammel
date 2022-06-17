@@ -19,11 +19,11 @@ Trammel provides generic handlers for most situation. Each handler provides gene
 output formats that can be extended. See below for what they refer and what they offer as response
 format.
 
-- [Validation Exception Handler](../docs/handlers/validation.md).
-- [Ajax Exception Handler](../docs/handlers/ajax.md).
-- [Json Exception Handler](../docs/handlers/json.md).
-- [Ajax Validation Exception Handler](../docs/handlers/ajax-validation.md).
-- [Json Validation Exception Handler](../docs/handlers/json-validation.md).
+- [Validation Exception Handler](docs/handlers/validation.md).
+- [Ajax Exception Handler](docs/handlers/ajax.md).
+- [Json Exception Handler](docs/handlers/json.md).
+- [Ajax Validation Exception Handler](docs/handlers/ajax-validation.md).
+- [Json Validation Exception Handler](docs/handlers/json-validation.md).
 
 ## Usage  
 
