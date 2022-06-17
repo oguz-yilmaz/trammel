@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Oguz\Tremmel\Tests;
+namespace Oguz\Trammel\Tests;
 
-use Oguz\Tremmel\Tests\Stubs\AjaxValidationHandlerStub;
-use Oguz\Tremmel\Tests\Stubs\JsonValidationHandlerStub;
+use Oguz\Trammel\Tests\Stubs\AjaxValidationHandlerStub;
+use Oguz\Trammel\Tests\Stubs\JsonValidationHandlerStub;
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Illuminate\Validation\ValidationException;
-use Oguz\Tremmel\Tests\Stubs\JsonHandlerStub;
-use Oguz\Tremmel\Tests\Stubs\AjaxHandlerStub;
+use Oguz\Trammel\Tests\Stubs\JsonHandlerStub;
+use Oguz\Trammel\Tests\Stubs\AjaxHandlerStub;
 use PHPUnit\Framework\TestCase;
-use Oguz\Tremmel\HandlersChain;
+use Oguz\Trammel\HandlersChain;
 use Illuminate\Http\Request;
 use Exception;
 

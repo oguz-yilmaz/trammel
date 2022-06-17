@@ -1,14 +1,14 @@
 {
-    "name": "oguz-yilmaz/tremmel",
+    "name": "oguz-yilmaz/trammel",
     "description": "Provides distinct exception handlers for Laravel",
     "keywords": [
-        "tremmel",
+        "trammel",
         "laravel-exceptions",
         "exceptions",
         "handler",
         "laravel"
     ],
-    "homepage": "https://github.com/oguz-yilmaz/tremmel",
+    "homepage": "https://github.com/oguz-yilmaz/trammel",
     "license": "MIT",
     "authors": [
         {
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Oguz\\Tremmel\\": "src"
+            "Oguz\\Trammel\\": "src"
         }
     },
     "scripts": {
@@ -35,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Oguz\\Tremmel\\Tests\\": "tests"
+            "Oguz\\Trammel\\Tests\\": "tests"
         }
     },
     "minimum-stability": "dev",

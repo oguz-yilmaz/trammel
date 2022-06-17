@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Oguz\Tremmel;
+namespace Oguz\Trammel;
 
-use Oguz\Tremmel\Handlers\AbstractHandler;
+use Oguz\Trammel\Handlers\AbstractHandler;
 use Illuminate\Http\Request;
 use Throwable;
 

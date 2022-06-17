@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Oguz\Tremmel\Handlers;
+namespace Oguz\Trammel\Handlers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Oguz\Tremmel\Tests\Stubs;
+namespace Oguz\Trammel\Tests\Stubs;
 
-use Oguz\Tremmel\Handlers\JsonValidationHandler;
+use Oguz\Trammel\Handlers\JsonValidationHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;

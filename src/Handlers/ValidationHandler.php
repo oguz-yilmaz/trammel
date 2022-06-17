@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Oguz\Tremmel\Handlers;
+namespace Oguz\Trammel\Handlers;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
