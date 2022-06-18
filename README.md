@@ -11,7 +11,7 @@ types of exceptions (`Validation exceptions`, `Ajax or Json exceptions` or `comb
 distict handlers for each where you can extend and customize.
 
 ## Installation  
-`composer install oguz-yilmaz/trammel`
+`composer require oguz-yilmaz/trammel`
 
 ## Exception handler types
 
