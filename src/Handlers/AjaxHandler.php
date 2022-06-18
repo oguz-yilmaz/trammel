@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Oguz\Trammel\Handlers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
@@ -15,7 +16,7 @@ class AjaxHandler extends AbstractHandler
         return $request->ajax();
     }
 
-    protected function handle(Request $request, Throwable $exception): JsonResponse
+    protected function handle(Request $request, Throwable $exception): Response
     {
         return $this->defaultExceptionResponse($exception);
     }

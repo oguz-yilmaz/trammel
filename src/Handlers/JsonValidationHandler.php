@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Oguz\Trammel\Handlers;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 use Throwable;
 
 class JsonValidationHandler extends AbstractHandler
@@ -16,7 +16,7 @@ class JsonValidationHandler extends AbstractHandler
         return $request->isJson() && $exception instanceof ValidationException;
     }
 
-    protected function handle(Request $request, Throwable $exception): JsonResponse
+    protected function handle(Request $request, Throwable $exception): Response
     {
         return $this->defaultValidationExceptionResponse($exception);
     }

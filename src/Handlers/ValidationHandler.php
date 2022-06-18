@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Oguz\Trammel\Handlers;
 
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Throwable;
 
 class ValidationHandler extends AbstractHandler
@@ -16,8 +16,8 @@ class ValidationHandler extends AbstractHandler
         return $exception instanceof ValidationException;
     }
 
-    protected function handle(Request $request, Throwable $exception): Response
+    protected function handle(Request $request, Throwable $exception): RedirectResponse
     {
-        return response()->json($exception->errors());
+        return redirect()->back()->withErrors('errors', $exception->errors());
     }
 }
