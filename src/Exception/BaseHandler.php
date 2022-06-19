@@ -15,15 +15,31 @@ use Throwable;
 
 class BaseHandler extends ExceptionHandler
 {
+    protected array $handlers = [];
+
+    private array $defaultHandlers = [
+        AjaxValidationHandler::class,
+        JsonValidationHandler::class,
+        AjaxHandler::class,
+        JsonHandler::class,
+        ValidationHandler::class,
+    ];
+
     public function render($request, Throwable $e)
     {
         $chain = new HandlersChain();
 
-        $chain->registerHandler(new AjaxValidationHandler());
-        $chain->registerHandler(new JsonValidationHandler());
-        $chain->registerHandler(new AjaxHandler());
-        $chain->registerHandler(new JsonHandler());
-        $chain->registerHandler(new ValidationHandler());
+        foreach ($this->defaultHandlers as $defaultHandler => $v) {
+            $handler = $defaultHandler;
+
+            if (in_array($defaultHandler, $this->handlers)) {
+                $handlerKey = array_search($defaultHandler, $this->handlers);
+
+                $handler = $this->handlers[$handlerKey];
+            }
+
+            $chain->registerHandler(new $handler);
+        }
 
         return $chain->processChain($request, $e) ?? parent::render($request, $e);
     }

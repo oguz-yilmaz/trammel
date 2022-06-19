@@ -18,6 +18,6 @@ class ValidationHandler extends AbstractHandler
 
     protected function handle(Request $request, Throwable $exception): RedirectResponse
     {
-        return redirect()->back()->withErrors('errors', $exception->errors());
+        return redirect()->back()->withErrors($exception->errors())->withInput();
     }
 }

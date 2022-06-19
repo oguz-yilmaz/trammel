@@ -13,7 +13,7 @@ distict handlers for each where you can extend and customize.
 ## Installation  
 `composer require oguz-yilmaz/trammel`
 
-## Exception handler types
+## Exception handler types and default output formats
 
 Trammel provides generic handlers for most situation. Each handler provides generic 
 output formats that can be extended. See below for what they refer and what they offer as response
@@ -26,7 +26,22 @@ format.
 - [Json Validation Exception Handler](docs/handlers/json-validation.md).
 
 ## Usage  
+  
+### Default output formats
 
-If you want to use default handlers you can simply extend `Handler` class with 
+If you want to use default output formats you can simply extend `Handler` class with 
 Trammel's `BaseHandler` class in `app/Exception` folder.  
+
+```php
+// app/Exception/Handler.php
+use Oguz\Trammel\Exception\BaseHandler;
+
+class Handler extends BaseHandler
+{
+    // if class has render method, remove it
+}
+```
+### Customizing handlers  
+
+if you don't want to use default behaviour of handlers, you can customize handlers by
 
