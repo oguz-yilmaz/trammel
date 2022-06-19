@@ -86,7 +86,61 @@ class Handler extends BaseHandler
 }
 ```   
 
-## How these exceptions will be triggered   
+## How these exceptions will be triggered  
+
+So it's all great we have different kind of handlers for different kind of exceptions. But when 
+Exactly do we get those types of exceptions? Here is an example controller that will give you the
+idea about which exception types will be thrown in which situation.  
+
+```php 
+<?php
+
+namespace App\Http\Controllers;
+
+
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
+use Exception;
+
+class IndexController extends Controller
+{
+    // $request->isJson() === false && $request->ajax() === false
+    public function index()
+    {
+        throw new Exception('Generic exception that will be passed to Laravel');
+    }
+
+    // $request->isJson() === false && $request->ajax() === false
+    public function validation(Request $request)
+    {
+        throw ValidationException::withMessages(['message' => 'Validation Exception']);
+    }
+
+    // $request->ajax() === true
+    public function ajax(Request $request)
+    {
+        throw new Exception('AJAX Exception');
+    }
+
+    // $request->isJson() === true
+    public function json(Request $request)
+    {
+        throw new Exception('JSON Exception');
+    }
+
+    // $request->ajax() === true
+    public function ajaxValidation(Request $request)
+    {
+        throw ValidationException::withMessages(['message' => 'AJAX Validation Exception']);
+    }
+
+    // $request->isJson() === true
+    public function jsonValidation(Request $request)
+    {
+        throw ValidationException::withMessages(['message' => 'JSON Validation Exception']);
+    }
+}
+```  
 
 To get detailed information for each exception type, see 
 [above](#exception-handler-types-and-default-output-formats).
