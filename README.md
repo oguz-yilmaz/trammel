@@ -89,7 +89,7 @@ class Handler extends BaseHandler
 ## How these exceptions will be triggered  
 
 So it's all great we have different kind of handlers for different kind of exceptions. But when 
-Exactly do we get those types of exceptions? Here is an example controller that will give you the
+exactly do we get those types of exceptions? Here is an example controller that will give you the
 idea about which exception types will be thrown in which situation.  
 
 ```php 
