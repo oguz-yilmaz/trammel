@@ -43,5 +43,50 @@ class Handler extends BaseHandler
 ```
 ### Customizing handlers  
 
-if you don't want to use default behaviour of handlers, you can customize handlers by
+if you don't want to use default behaviour of a handler, you can extend it. First let's create
+a new folder under `app/Exception` called `Handlers` to keep our custom exception handlers.
+This will make it more tidy and clean.
 
+```php
+<?php
+
+namespace App\Exceptions\Handlers;
+
+use Symfony\Component\HttpFoundation\Response;
+use Oguz\Trammel\Handlers\AjaxHandler;
+use Illuminate\Http\Request;
+use Throwable;
+
+class CustomAjaxHandler extends AjaxHandler
+{
+    protected function handle(Request $request, Throwable $exception): Response
+    {
+        return response()->json([
+            'success' => true
+        ]);
+    }
+}
+```  
+Then you need to add these custom exception handlers to `$handlers` property of the
+`App\Exception\Handler` class comes from `Oguz\Trammel\Exception\BaseHandler` class.
+
+```php
+namespace App\Exceptions;
+
+use App\Exceptions\Handlers\CustomAjaxHandler;
+use Oguz\Trammel\Exception\BaseHandler;
+
+class Handler extends BaseHandler
+{
+    protected array $handlers = [
+        CustomAjaxHandler::class
+    ];
+    
+    //...
+}
+```   
+
+## How these exceptions will be triggered   
+
+To get detailed information for each exception type, see 
+[above](#exception-handler-types-and-default-output-formats).
