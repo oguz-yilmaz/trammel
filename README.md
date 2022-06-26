@@ -13,6 +13,12 @@ distict handlers for each where you can extend and customize.
 ## Installation  
 `composer require oguz-yilmaz/trammel`
 
+## Version Compatibility
+
+| Laravel | PHP  | Trammel |
+|---------|------|---------|
+| 7.x     | 8.0+ | 1.x     |
+
 ## Exception handler types and default output formats
 
 Trammel provides generic handlers for most situation. Each handler provides generic 
