@@ -10,9 +10,4 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-
-  <php>
-    <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
-  </php>
-
 </phpunit>
