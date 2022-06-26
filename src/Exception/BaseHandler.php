@@ -27,6 +27,8 @@ class BaseHandler extends ExceptionHandler
         ValidationHandler::class,
     ];
 
+    protected function preRender($request, Throwable $e) {}
+
     public function render($request, Throwable $e): Response
     {
         $chain = new HandlersChain();
@@ -38,6 +40,8 @@ class BaseHandler extends ExceptionHandler
 
             $chain->registerHandler(new $handler);
         }
+
+        $this->preRender($request, $e);
 
         return $chain->processChain($request, $e) ?? parent::render($request, $e);
     }
